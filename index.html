@@ -5,32 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Qué Team Principal eres?</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#111;color:#fff}
-.container{max-width:900px;margin:auto;padding:20px}
-.card{background:#1c1c1c;border-radius:14px;padding:25px;margin-top:20px;box-shadow:0 0 20px rgba(0,0,0,.3)}
-.logo{text-align:center;font-size:42px}
-h1{text-align:center;color:#e10600}
-.progress-wrap{margin:10px 0}
-.progress{height:12px;background:#333;border-radius:999px;overflow:hidden}
-.bar{height:100%;width:0;background:#e10600;transition:.3s}
-.option{display:block;width:100%;padding:14px;margin:10px 0;background:#2d2d2d;border:none;border-radius:8px;color:white;text-align:left;cursor:pointer}
-.option:hover{background:#444}
-.hidden{display:none}
-.center{text-align:center}
-img{max-width:260px;border-radius:12px}
-.btn{padding:12px 24px;background:#e10600;color:#fff;border:none;border-radius:8px;cursor:pointer}
-.small{opacity:.8;font-size:14px}
+body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #111; color: #fff; }
+.container { max-width: 600px; margin: auto; padding: 20px; }
+.card { background: #1c1c1c; border-radius: 14px; padding: 25px; margin-top: 20px; box-shadow: 0 0 20px rgba(0,0,0,.5); border-top: 4px solid #e10600; }
+.logo { text-align: center; font-size: 50px; margin-bottom: 10px; }
+h1 { text-align: center; color: #e10600; font-size: 24px; }
+h2 { font-size: 18px; margin-bottom: 20px; }
+.progress-wrap { margin: 15px 0; }
+.progress { height: 10px; background: #333; border-radius: 999px; overflow: hidden; }
+.bar { height: 100%; width: 0; background: #e10600; transition: 0.4s ease-out; }
+.option { display: block; width: 100%; padding: 16px; margin: 10px 0; background: #2d2d2d; border: 2px solid transparent; border-radius: 8px; color: white; text-align: left; cursor: pointer; font-size: 15px; transition: 0.2s; font-family: inherit; }
+.option:hover { background: #3d3d3d; border-color: #e10600; }
+.hidden { display: none !important; }
+.center { text-align: center; }
+img { max-width: 100%; height: auto; border-radius: 12px; margin: 15px 0; border: 2px solid #333; }
+.btn { padding: 14px 28px; background: #e10600; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%; margin-top: 20px; }
+.btn:hover { background: #b80500; }
+.small { opacity: 0.7; font-size: 12px; margin-top: 20px; }
+.msg-facilitador { background: #2a2a2a; padding: 15px; border-left: 4px solid #00d2be; border-radius: 0 8px 8px 0; text-align: left; margin-top: 20px; }
+.msg-facilitador h3 { color: #00d2be; margin-top: 0; font-size: 16px; }
 </style>
 </head>
 <body>
 <div class="container">
 
 <div id="quiz">
-<div class="logo">🏎️</div>
-<h1>¿Qué Team Principal de Fórmula 1 eres?</h1>
+<div class="logo">🏎️🏁</div>
+<h1>Test de Personalidad F1</h1>
 
 <div class="card">
-<div id="counter"></div>
+<div id="counter" style="color: #aaa; font-size: 14px; text-align: right;"></div>
 <div class="progress-wrap"><div class="progress"><div id="bar" class="bar"></div></div></div>
 <h2 id="question"></h2>
 <div id="answers"></div>
@@ -38,36 +42,36 @@ img{max-width:260px;border-radius:12px}
 </div>
 
 <div id="loading" class="hidden center">
+<div class="logo">📻</div>
 <h1>Procesando telemetría...</h1>
 <div class="card">
-<p id="loadingText">Analizando datos del paddock...</p>
-<div class="progress"><div id="loadingBar" class="bar"></div></div>
+<p id="loadingText" style="font-size: 18px;">Analizando datos del paddock...</p>
+<div class="progress" style="margin-top: 20px;"><div id="loadingBar" class="bar"></div></div>
 </div>
 </div>
 
 <div id="fakeResult" class="hidden center">
 <div class="card">
 <h1>Resultado calculado...</h1>
-<h2>Christian Horner</h2>
-<p>Verificando telemetría...</p>
+<h2 style="font-size: 28px; color: #aaa;">Fred Vasseur</h2>
+<p>Espera, cruzando datos con la FIA...</p>
 </div>
 </div>
 
 <div id="result" class="hidden center">
 <div class="card">
-<div style="font-size:120px">🏆</div>
-<h1>¡Eres Toto Wolff!</h1>
-<p><strong>Añade una imagen llamada toto.jpg junto a este archivo para mostrar la foto.</strong></p>
-<img src="toto.jpg" alt="Toto Wolff" onerror="this.style.display='none'">
-<p>Tu capacidad para leer carreras, anticipar movimientos y acertar pronósticos convierte cada decisión en una obra maestra estratégica.</p>
-
-<h2>Predicción para Andrés</h2>
-<p id="prediccion"></p>
-
-<p class="small">
-Nivel de confianza: 99,1%<br>
-Excepto en caso de lluvia, Safety Car, banderas rojas o cambios espontáneos de planes.
+<h1 style="color: #00d2be; font-size: 32px; margin-bottom: 5px;">¡Eres Toto Wolff!</h1>
+<img src="Toto.jpeg" alt="Toto Wolff" onerror="this.style.display='none'">
+<p style="font-size: 16px; line-height: 1.6; padding: 10px 0;">
+Resulta que da igual lo que hayas contestado, la telemetría es clara: tienes la mente de un auténtico estratega multicampeón. Tu capacidad para analizar cada detalle, prever los escenarios y elegir sabiamente explica perfectamente por qué <strong>me das palizas absolutas e indiscutibles en el Fantasy de F1</strong>. 
+<br><br>
+Tu inteligencia y visión de carrera están a otro nivel, dignas del dominio aplastante de Mercedes en la era híbrida. Simplemente, procesas la información mejor, ves oportunidades que los demás no ven y siempre vas dos pasos por delante en el paddock. ¡Eres la verdadera Jefa de Equipo!
 </p>
+
+<div class="msg-facilitador">
+<h3>✉️ Mensaje para el Facilitador:</h3>
+<p id="prediccion" style="margin-bottom: 0;"></p>
+</div>
 
 <button class="btn" onclick="location.reload()">Repetir test</button>
 </div>
@@ -76,87 +80,95 @@ Excepto en caso de lluvia, Safety Car, banderas rojas o cambios espontáneos de 
 </div>
 
 <script>
-const preguntas=[
-{q:"¿Qué valoras más en una carrera?",a:["Estrategia","Adelantamientos","Clasificación","Pit Stops"]},
-{q:"¿Qué harías ante un Safety Car?",a:["Entrar ya","Esperar","Copiar al rival","Improvisar"]},
-{q:"¿Qué piloto elegirías?",a:["Hamilton","Verstappen","Norris","Alonso"]},
-{q:"¿Cuál es tu circuito favorito?",a:["Silverstone","Spa","Suzuka","Monza"]},
-{q:"¿Qué define a un gran Team Principal?",a:["Liderazgo","Estrategia","Carisma","Visión"]},
-{q:"Si fueras Team Principal durante una carrera caótica, ¿qué te representaría mejor?",a:["Mantener la calma","Arriesgar","Motivar al equipo","Revisar datos"]},
-{q:"En un escenario de fin de semana de Gran Premio, ¿Betania aceptará la propuesta de Andrés para quedar este finde?",a:["Ni de broma","Me gustaría decir que sí, pero quiero ver qué más inventa","Seguro que sí","Si Hamilton acaba en el podio"]}
+const preguntas = [
+{q: "¿Qué valoras más durante una carrera intensa?", a: ["Una estrategia matemática perfecta", "Adelantamientos al límite", "Una parada en boxes de 1.8s", "Tener el coche más rápido y punto"]},
+{q: "¿Qué harías si sale un Safety Car a falta de 5 vueltas?", a: ["Entrar a poner blandos, cueste lo que cueste", "Quedarme en pista y defender posición", "Preguntar al piloto qué prefiere", "Llorar por la radio a dirección de carrera"]},
+{q: "¿Qué cualidad es innegociable en tu piloto estrella?", a: ["Velocidad pura a una vuelta", "Constancia dominguera", "Que no destroce el coche", "Que sepa dar buen feedback técnico"]},
+{q: "¿Cuál es tu circuito favorito del calendario?", a: ["Silverstone, cuna del motor", "Spa-Francorchamps, puro desafío", "Mónaco, puro glamour", "Monza, el templo de la velocidad"]},
+{q: "¿Cómo reaccionas si sospechas que el equipo rival hace trampas?", a: ["Voy a la FIA con un dosier de 500 páginas", "Lanzo pullitas pasivo-agresivas en prensa", "Copio su idea para el próximo finde", "Imprimo fotos de su coche y las llevo al paddock"]},
+{q: "Si tus dos pilotos se chocan entre ellos...", a: ["Les echo la bronca delante de todos", "Cerramos la puerta de la oficina y vuelan sillas", "Le echo la culpa al otro equipo", "Son carreras, cosas que pasan"]},
+{q: "¿Qué prefieres para almorzar en el hospitality?", a: ["Pumpernickel tostado, como debe ser", "Un buen plato de pasta", "Bebida energética a saco", "Algo rápido y a mirar la telemetría"]},
+{q: "Empieza a llover fuerte a mitad de carrera. ¿Tu reacción?", a: ["Pánico absoluto en el muro", "Llamar a boxes inmediatamente para poner intermedios", "Rezar mirando al cielo", "Esperar a ver qué hace el líder y copiarle"]},
+{q: "Lo que define a un gran líder en la F1 es...", a: ["El carisma puro", "Saber gestionar los egos", "Tener la billetera más grande", "Tener siempre la razón"]},
+{q: "En un fin de semana de Gran Premio (contando con el Viernes de Libres). ¿Aceptarías la propuesta de quedar en este finde (Viernes incluido), en el momento que mejor te venga, con el facilitador de este test?", a: [
+    "Ni de broma.",
+    "Quiero decir que sí peero me gustaría ver que es lo siguiente que puede inventar.",
+    "Sí, puedo quedar.",
+    "Si sobreviven los dos Cadillac el próximo finde hago el hueco. Si no sobreviven, tendrá que volver a intentarlo."
+]}
 ];
 
-let i=0, respuestaFinal="";
-const q=document.getElementById("question");
-const a=document.getElementById("answers");
+let i = 0, respuestaFinal = "";
+const q = document.getElementById("question");
+const a = document.getElementById("answers");
 
 function render(){
- document.getElementById("counter").textContent=`Pregunta ${i+1} de ${preguntas.length}`;
- document.getElementById("bar").style.width=((i)/preguntas.length*100)+"%";
- q.textContent=preguntas[i].q;
- a.innerHTML="";
- preguntas[i].a.forEach(op=>{
-   const b=document.createElement("button");
-   b.className="option";
-   b.textContent=op;
-   b.onclick=()=>answer(op);
+ document.getElementById("counter").textContent = `Sector ${i+1} / ${preguntas.length}`;
+ document.getElementById("bar").style.width = ((i)/preguntas.length*100) + "%";
+ q.textContent = preguntas[i].q;
+ a.innerHTML = "";
+ preguntas[i].a.forEach(op => {
+   const b = document.createElement("button");
+   b.className = "option";
+   b.textContent = op;
+   b.onclick = () => answer(op);
    a.appendChild(b);
  });
 }
 
 function answer(op){
- if(i===preguntas.length-1) respuestaFinal=op;
+ if(i === preguntas.length - 1) respuestaFinal = op;
  i++;
- if(i<preguntas.length){ render(); return; }
+ if(i < preguntas.length){ render(); return; }
  startLoading();
 }
 
 function startLoading(){
  document.getElementById("quiz").classList.add("hidden");
  document.getElementById("loading").classList.remove("hidden");
- const msgs=[
+ const msgs = [
  "Analizando telemetría...",
- "Consultando datos históricos...",
- "Simulando estrategias...",
- "Comparando decisiones...",
- "Verificando predicción final..."
+ "Consultando reglaje del coche...",
+ "Simulando estrategias de parada...",
+ "Escuchando radios del equipo...",
+ "Recibiendo email de Michael Masi..."
  ];
- let p=0,m=0;
- const lb=document.getElementById("loadingBar");
- const lt=document.getElementById("loadingText");
- const t=setInterval(()=>{
-   p++;
-   lb.style.width=p+"%";
-   if(p%20===0 && m<msgs.length-1){m++;lt.textContent=msgs[m];}
-   if(p>=100){
+ let p = 0, m = 0;
+ const lb = document.getElementById("loadingBar");
+ const lt = document.getElementById("loadingText");
+ const t = setInterval(() => {
+   p += 1.5;
+   lb.style.width = p + "%";
+   if(p % 20 === 0 && m < msgs.length - 1){ m++; lt.textContent = msgs[m]; }
+   if(p >= 100){
       clearInterval(t);
       document.getElementById("loading").classList.add("hidden");
       document.getElementById("fakeResult").classList.remove("hidden");
-      setTimeout(showResult,1500);
+      setTimeout(showResult, 2000);
    }
- },25);
+ }, 40);
 }
 
 function showResult(){
  document.getElementById("fakeResult").classList.add("hidden");
  document.getElementById("result").classList.remove("hidden");
 
- let txt="";
+ let txt = "";
  switch(respuestaFinal){
-   case "Ni de broma":
-    txt="Los ingenieros consideran que la propuesta necesita una revisión completa. Se recomienda volver al túnel de viento.";
+   case "Ni de broma.":
+    txt = "Bandera roja en pista. 🚩 Patinazo. Toca recoger el garaje, analizar qué ha fallado en la estrategia y aceptar el DNF en este Gran Premio.";
     break;
-   case "Me gustaría decir que sí, pero quiero ver qué más inventa":
-    txt="Los analistas detectan predisposición positiva, aunque Andrés todavía dispone de margen para sorprender con nuevas iniciativas.";
+   case "Quiero decir que sí peero me gustaría ver que es lo siguiente que puede inventar.":
+    txt = "Bandera amarilla. 🟨 Hay interés en pista, pero hay que sacar el Safety Car. Tienes que pensar en una estrategia más creativa si quieres la victoria.";
     break;
-   case "Seguro que sí":
-    txt="La simulación ha sido concluyente. La probabilidad de éxito es comparable a una pole de Mercedes en sus mejores años.";
+   case "Sí, puedo quedar.":
+    txt = "¡Vuelta rápida de todo el fin de semana y pole position! Empieza a preparar la estrategia de paradas porque este fin de semana no podemos perder la carrera.";
     break;
-   case "Si Hamilton acaba en el podio":
-    txt="La decisión queda condicionada a un acontecimiento altamente específico. El equipo continúa monitorizando la situación.";
+   case "Si sobreviven los dos Cadillac el próximo finde hago el hueco. Si no sobreviven, tendrá que volver a intentarlo.":
+    txt = "¡Comienza la carrera! 🏎️ Todo depende de la fiabilidad estadounidense. Pon unas velas a los dioses del motor, reza por esos Cadillac y cruza los dedos. La verdadera carrera de resistencia acaba de empezar.";
     break;
  }
- document.getElementById("prediccion").textContent=txt;
+ document.getElementById("prediccion").textContent = txt;
 }
 
 render();
